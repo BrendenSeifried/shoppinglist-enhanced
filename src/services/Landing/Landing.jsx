@@ -4,8 +4,14 @@ import { useItemContext } from '../../context/ItemContext';
 export default function Landing() {
   // const [allItems, setAllItems] = useState([]);
 
-  const { allItems, submitGrocery, setGrocery, grocery, clearAll } =
-    useItemContext();
+  const {
+    allItems,
+    submitGrocery,
+    setGrocery,
+    grocery,
+    clearAll,
+    removeGrocery,
+  } = useItemContext();
 
   // const [item, setItem] = useState('');
   const [load, setLoad] = useState(true);
@@ -38,7 +44,7 @@ export default function Landing() {
         <div key={items.id}>
           <p>{items.item}</p>
 
-          <button>Remove</button>
+          <button onClick={() => removeGrocery(items.id)}>Remove</button>
         </div>
       ))}
     </>

@@ -1,3 +1,4 @@
+import { array } from 'prop-types';
 import { createContext, useContext, useReducer, useState } from 'react';
 
 const initItem = [{ id: Date.now(), item: 'ToiletPaper' }];
@@ -12,6 +13,9 @@ const reducer = (state, action) => {
       return [{ id: Date.now(), item: action.payload.item }, ...state];
     case 'CLEARALL':
       return [];
+
+    case 'REMOVE':
+      return state.filter((check) => action.payload.id !== check.id);
     default:
       return state;
   }
@@ -29,15 +33,28 @@ const ContextProvider = ({ children }) => {
   };
   ////////////////////////////
 
-  /////////DELETE GROCERY
+  /////////DELETE ALL GROCERY
   const clearAll = (id) => {
     dispatch({ type: 'CLEARALL', payload: { id } });
   };
   ///////////////
 
+  /////////REMOVE GROCERY
+  const removeGrocery = (id) => {
+    dispatch({ type: 'REMOVE', payload: { id } });
+  };
+  ///////////////
+
   return (
     <ItemContext.Provider
-      value={{ allItems, submitGrocery, setGrocery, grocery, clearAll }}
+      value={{
+        allItems,
+        submitGrocery,
+        setGrocery,
+        grocery,
+        clearAll,
+        removeGrocery,
+      }}
     >
       {children}
     </ItemContext.Provider>
