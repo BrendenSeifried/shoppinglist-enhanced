@@ -16,6 +16,12 @@ const reducer = (state, action) => {
 
     case 'REMOVE':
       return state.filter((check) => action.payload.id !== check.id);
+
+    case 'EDIT':
+      return state.filter((check) => {
+        if (action.payload.id === check.id) return action.payload.item;
+        return check;
+      });
     default:
       return state;
   }
@@ -45,6 +51,12 @@ const ContextProvider = ({ children }) => {
   };
   ///////////////
 
+  ////////EDIT GROCERY
+  const editGrocery = (id) => {
+    dispatch({ type: 'EDIT', payload: { item: grocery, id } });
+  };
+  /////////////////////////
+
   return (
     <ItemContext.Provider
       value={{
@@ -54,6 +66,7 @@ const ContextProvider = ({ children }) => {
         grocery,
         clearAll,
         removeGrocery,
+        editGrocery,
       }}
     >
       {children}
