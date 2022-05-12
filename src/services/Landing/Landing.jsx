@@ -11,17 +11,10 @@ export default function Landing() {
 
   useEffect(() => {
     const placeItems = async () => {
-      // setAllItems(item);
       setLoad(false);
     };
     placeItems();
   }, []);
-
-  // const submitItem = async () => {
-  //   setAllItems((prevState) => [...prevState, item]);
-  //   console.log(allItems);
-  //   setItem('');
-  // };
 
   if (load) return <h1>Loading</h1>;
 
@@ -40,7 +33,11 @@ export default function Landing() {
         <button onClick={submitGrocery}>Add</button>
       </div>
       {allItems.map((items) => (
-        <div key={items.id}>{items.item}</div>
+        <div key={items.id}>
+          <p>{items.item}</p>
+
+          <button>Remove</button>
+        </div>
       ))}
     </>
   );

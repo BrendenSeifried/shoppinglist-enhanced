@@ -20,6 +20,7 @@ const ContextProvider = ({ children }) => {
   const [grocery, setGrocery] = useState('');
   const [allItems, dispatch] = useReducer(reducer, initItem);
 
+  /////ADDING NEW GROCERY
   const submitGrocery = () => {
     dispatch({ type: 'NEW', payload: { item: grocery } });
     setGrocery('');
