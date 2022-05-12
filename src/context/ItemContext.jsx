@@ -10,6 +10,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'NEW':
       return [{ id: Date.now(), item: action.payload.item }, ...state];
+    case 'CLEARALL':
+      return [];
     default:
       return state;
   }
@@ -17,18 +19,25 @@ const reducer = (state, action) => {
 
 const ItemContext = createContext();
 const ContextProvider = ({ children }) => {
-  const [grocery, setGrocery] = useState('');
-  const [allItems, dispatch] = useReducer(reducer, initItem);
+  const [grocery, setGrocery] = useState(''); ////text to enter item
+  const [allItems, dispatch] = useReducer(reducer, initItem); ///dispatch and array of items
 
   /////ADDING NEW GROCERY
   const submitGrocery = () => {
     dispatch({ type: 'NEW', payload: { item: grocery } });
     setGrocery('');
   };
+  ////////////////////////////
+
+  /////////DELETE GROCERY
+  const clearAll = (id) => {
+    dispatch({ type: 'CLEARALL', payload: { id } });
+  };
+  ///////////////
 
   return (
     <ItemContext.Provider
-      value={{ allItems, submitGrocery, setGrocery, grocery }}
+      value={{ allItems, submitGrocery, setGrocery, grocery, clearAll }}
     >
       {children}
     </ItemContext.Provider>

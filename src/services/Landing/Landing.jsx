@@ -4,7 +4,8 @@ import { useItemContext } from '../../context/ItemContext';
 export default function Landing() {
   // const [allItems, setAllItems] = useState([]);
 
-  const { allItems, submitGrocery, setGrocery, grocery } = useItemContext();
+  const { allItems, submitGrocery, setGrocery, grocery, clearAll } =
+    useItemContext();
 
   // const [item, setItem] = useState('');
   const [load, setLoad] = useState(true);
@@ -31,6 +32,7 @@ export default function Landing() {
           />
         </label>
         <button onClick={submitGrocery}>Add</button>
+        <button onClick={clearAll}>Clear Cart</button>
       </div>
       {allItems.map((items) => (
         <div key={items.id}>
