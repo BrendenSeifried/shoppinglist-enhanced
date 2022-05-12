@@ -37,7 +37,7 @@ export default function Landing() {
         </label>
         <button onClick={submitItem}>Add</button>
       </div>
-      <h1>{item}</h1>
+      <h1>{allItems}</h1>
     </>
   );
 }
