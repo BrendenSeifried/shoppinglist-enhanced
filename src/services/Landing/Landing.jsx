@@ -4,7 +4,7 @@ import { useItemContext } from '../../context/ItemContext';
 export default function Landing() {
   // const [allItems, setAllItems] = useState([]);
 
-  const { allItems, submitItem } = useItemContext();
+  const { allItems, submitGrocery, setGrocery, grocery } = useItemContext();
 
   // const [item, setItem] = useState('');
   const [load, setLoad] = useState(true);
@@ -32,14 +32,16 @@ export default function Landing() {
         <label>
           Enter a grocery item:
           <input
-          // type="text"
-          // value={item}
-          // onChange={(e) => setItem(e.target.value)}
+            type="text"
+            value={grocery}
+            onChange={(e) => setGrocery(e.target.value)}
           />
         </label>
-        <button onClick={submitItem}>Add</button>
+        <button onClick={submitGrocery}>Add</button>
       </div>
-      {/* <h1>{allItems}</h1> */}
+      {allItems.map((items) => (
+        <div key={items.id}>{items.item}</div>
+      ))}
     </>
   );
 }

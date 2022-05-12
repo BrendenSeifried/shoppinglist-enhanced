@@ -4,8 +4,10 @@ const initItem = [{ id: Date.now(), item: 'ToiletPaper' }];
 
 const reducer = (state, action) => {
   console.log('state', state);
-  console.log('action', action);
-  switch (action.item) {
+  console.log('action.type', action.type);
+  console.log('action.payload', action.payload);
+
+  switch (action.type) {
     case 'NEW':
       return [{ id: Date.now(), item: action.payload.item }, ...state];
     default:
@@ -15,14 +17,18 @@ const reducer = (state, action) => {
 
 const ItemContext = createContext();
 const ContextProvider = ({ children }) => {
+  const [grocery, setGrocery] = useState('');
   const [allItems, dispatch] = useReducer(reducer, initItem);
 
-  const submitItem = async (item) => {
-    dispatch({ type: 'NEW', payload: { item } });
+  const submitGrocery = () => {
+    dispatch({ type: 'NEW', payload: { item: grocery } });
+    setGrocery('');
   };
 
   return (
-    <ItemContext.Provider value={{ allItems, submitItem }}>
+    <ItemContext.Provider
+      value={{ allItems, submitGrocery, setGrocery, grocery }}
+    >
       {children}
     </ItemContext.Provider>
   );
