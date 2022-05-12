@@ -17,6 +17,7 @@ export default function Landing() {
   const submitItem = async () => {
     const data = item;
     setAllItems((prevState) => [...prevState, data]);
+    console.log(allItems);
     setItem('');
   };
 
