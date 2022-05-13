@@ -6,6 +6,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'NEW':
       return [{ id: Date.now(), item: action.payload.item }, ...state];
+
     case 'CLEARALL':
       return [];
 
@@ -30,8 +31,6 @@ const ContextProvider = ({ children }) => {
   const [grocery, setGrocery] = useState(''); ////text to enter item
   const [allItems, dispatch] = useReducer(reducer, initItem); ///dispatch and array of items
   const [editItem, setEditItem] = useState('');
-
-  console.log(counter);
 
   /////ADDING NEW GROCERY
   const submitGrocery = () => {

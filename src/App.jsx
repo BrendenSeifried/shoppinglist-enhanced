@@ -1,4 +1,3 @@
-// import Header from './components/Header';
 import { ContextProvider } from './context/ItemContext';
 import Landing from './services/Landing/Landing';
 import Header from './components/Header';

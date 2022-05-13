@@ -32,6 +32,9 @@ describe('behaviour test 1', () => {
 
     ///click remove and use screen.debug to confirm ToiletPaper has been removed
     userEvent.click(findRemove);
+
+    const removedItem = screen.queryByText('ToiletPaper');
+    expect(removedItem).not.toBeInTheDocument();
     ///
 
     ///find the input and type in test
