@@ -53,13 +53,6 @@ const ContextProvider = ({ children }) => {
   };
   ///////////////
 
-  ////////EDIT GROCERY
-  //   const editGrocery = (id) => {
-  //     dispatch({ type: 'EDIT', payload: { item: grocery, id } });
-  //     // setEdit(!edit);
-  //   };
-  /////////////////////////
-
   //////EDIT GROCERY
   const editGrocery = (id) => {
     dispatch({ type: 'EDIT', payload: { item: editItem, id } });
@@ -78,9 +71,6 @@ const ContextProvider = ({ children }) => {
         editGrocery,
         editItem,
         setEditItem,
-        // setEdit,
-        // edit,
-        // editBtn,
       }}
     >
       {children}

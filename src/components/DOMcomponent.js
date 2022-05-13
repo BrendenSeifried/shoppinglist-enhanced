@@ -2,16 +2,9 @@ import React, { useState } from 'react';
 import { useItemContext } from '../context/ItemContext';
 
 export default function DOMcomponent({ items }) {
-  const {
-    removeGrocery,
-    setGrocery,
-    grocery,
-    editGrocery,
-    editItem,
-    setEditItem,
-  } = useItemContext();
+  const { removeGrocery, editGrocery, editItem, setEditItem } =
+    useItemContext();
   const [edit, setEdit] = useState(false);
-  //   const [editItem, setEditItem] = useState('');
 
   const editBtn = () => {
     setEdit(!edit);
