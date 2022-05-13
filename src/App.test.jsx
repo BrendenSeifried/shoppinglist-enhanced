@@ -117,5 +117,12 @@ describe('test for clear all functionality', () => {
 
     const secondTest = screen.getByText('second');
     expect(secondTest).toBeInTheDocument();
+
+    const clear = screen.getByText('Clear Cart');
+    expect(clear).toBeInTheDocument();
+
+    userEvent.click(clear);
+    ///used screen.debug to check that first and second are cleared out
+    screen.debug();
   });
 });
