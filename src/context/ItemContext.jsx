@@ -31,8 +31,6 @@ const ContextProvider = ({ children }) => {
   const [grocery, setGrocery] = useState(''); ////text to enter item
   const [allItems, dispatch] = useReducer(reducer, initItem); ///dispatch and array of items
 
-  const [edit, setEdit] = useState(false);
-
   /////ADDING NEW GROCERY
   const submitGrocery = () => {
     dispatch({ type: 'NEW', payload: { item: grocery } });
@@ -55,7 +53,7 @@ const ContextProvider = ({ children }) => {
   ////////EDIT GROCERY
   const editGrocery = (id) => {
     dispatch({ type: 'EDIT', payload: { item: grocery, id } });
-    setEdit(!edit);
+    // setEdit(!edit);
   };
   /////////////////////////
 
@@ -69,8 +67,9 @@ const ContextProvider = ({ children }) => {
         clearAll,
         removeGrocery,
         editGrocery,
-        setEdit,
-        edit,
+        // setEdit,
+        // edit,
+        // editBtn,
       }}
     >
       {children}
