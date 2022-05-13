@@ -11,6 +11,7 @@ export default function DOMcomponent({ items }) {
     setEditItem,
   } = useItemContext();
   const [edit, setEdit] = useState(false);
+  //   const [editItem, setEditItem] = useState('');
 
   const editBtn = () => {
     setEdit(!edit);
@@ -21,10 +22,10 @@ export default function DOMcomponent({ items }) {
         <>
           <input
             type="text"
-            value={editItem}
+            value={editItem.id}
             onChange={(e) => setEditItem(e.target.value)}
           />
-          <button onClick={editGrocery}>SAVE</button>
+          <button onClick={() => editGrocery(items.id)}>SAVE</button>
         </>
       )}
       <p>{items.item}</p>

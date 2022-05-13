@@ -17,8 +17,10 @@ const reducer = (state, action) => {
       return state.filter((check) => action.payload.id !== check.id);
 
     case 'EDIT':
-      return state.filter((check) => {
-        if (action.payload.id === check.id) return action.payload.item;
+      return state.map((check) => {
+        if (action.payload.id === check.id) {
+          return { ...check, item: action.payload.item };
+        }
         return check;
       });
     default:
@@ -61,7 +63,6 @@ const ContextProvider = ({ children }) => {
   //////EDIT GROCERY
   const editGrocery = (id) => {
     dispatch({ type: 'EDIT', payload: { item: editItem, id } });
-    // setEdit(!edit);
   };
   ///////////////////////
 
