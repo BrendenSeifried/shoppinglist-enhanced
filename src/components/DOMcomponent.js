@@ -14,6 +14,7 @@ export default function DOMcomponent({ items }) {
     edit,
     editBtn,
     text,
+    editGrocery,
   } = useItemContext();
   return (
     <div>
@@ -26,7 +27,7 @@ export default function DOMcomponent({ items }) {
       )}
       <p>{items.item}</p>
 
-      <button onClick={editBtn}>{edit ? 'EDIT' : 'SAVE'}</button>
+      <button onClick={editGrocery}>{edit ? 'EDIT' : 'SAVE'}</button>
       <button onClick={() => removeGrocery(items.id)}>Remove</button>
     </div>
   );

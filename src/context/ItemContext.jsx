@@ -33,10 +33,6 @@ const ContextProvider = ({ children }) => {
 
   const [edit, setEdit] = useState(false);
 
-  const editBtn = () => {
-    setEdit(!edit);
-  };
-
   /////ADDING NEW GROCERY
   const submitGrocery = () => {
     dispatch({ type: 'NEW', payload: { item: grocery } });
@@ -75,7 +71,6 @@ const ContextProvider = ({ children }) => {
         editGrocery,
         setEdit,
         edit,
-        editBtn,
       }}
     >
       {children}
