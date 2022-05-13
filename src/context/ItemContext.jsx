@@ -30,6 +30,7 @@ const ItemContext = createContext();
 const ContextProvider = ({ children }) => {
   const [grocery, setGrocery] = useState(''); ////text to enter item
   const [allItems, dispatch] = useReducer(reducer, initItem); ///dispatch and array of items
+  const [editItem, setEditItem] = useState('');
 
   /////ADDING NEW GROCERY
   const submitGrocery = () => {
@@ -51,11 +52,18 @@ const ContextProvider = ({ children }) => {
   ///////////////
 
   ////////EDIT GROCERY
+  //   const editGrocery = (id) => {
+  //     dispatch({ type: 'EDIT', payload: { item: grocery, id } });
+  //     // setEdit(!edit);
+  //   };
+  /////////////////////////
+
+  //////EDIT GROCERY
   const editGrocery = (id) => {
-    dispatch({ type: 'EDIT', payload: { item: grocery, id } });
+    dispatch({ type: 'EDIT', payload: { item: editItem, id } });
     // setEdit(!edit);
   };
-  /////////////////////////
+  ///////////////////////
 
   return (
     <ItemContext.Provider
@@ -67,6 +75,8 @@ const ContextProvider = ({ children }) => {
         clearAll,
         removeGrocery,
         editGrocery,
+        editItem,
+        setEditItem,
         // setEdit,
         // edit,
         // editBtn,
