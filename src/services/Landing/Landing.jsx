@@ -3,12 +3,8 @@ import DOMcomponent from '../../components/DOMcomponent';
 import { useItemContext } from '../../context/ItemContext';
 
 export default function Landing() {
-  // const [allItems, setAllItems] = useState([]);
-
   const { allItems, submitGrocery, setGrocery, grocery, clearAll } =
     useItemContext();
-
-  // const [item, setItem] = useState('');
 
   return (
     <>

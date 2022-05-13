@@ -3,10 +3,6 @@ import { createContext, useContext, useReducer, useState } from 'react';
 const initItem = [{ id: Date.now(), item: 'ToiletPaper' }];
 
 const reducer = (state, action) => {
-  console.log('state', state);
-  console.log('action.type', action.type);
-  console.log('action.payload', action.payload);
-
   switch (action.type) {
     case 'NEW':
       return [{ id: Date.now(), item: action.payload.item }, ...state];
