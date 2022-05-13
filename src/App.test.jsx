@@ -11,6 +11,11 @@ describe('Component test', () => {
     );
     const compTest1 = screen.getByText('Clear Cart');
     expect(compTest1).toBeInTheDocument();
+  });
+});
+
+describe('behaviour test 1', () => {
+  it('testing add and remove button functionality', async () => {
     screen.debug();
   });
 });
