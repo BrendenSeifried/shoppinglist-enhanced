@@ -9,6 +9,8 @@ describe('Component test', () => {
         <App />
       </ContextProvider>
     );
+    const compTest1 = screen.getByText('Clear Cart');
+    expect(compTest1).toBeInTheDocument();
     screen.debug();
   });
 });
