@@ -22,6 +22,17 @@ describe('behaviour test 1', () => {
         <App />
       </ContextProvider>
     );
+    const paperTest = screen.getByText('ToiletPaper');
+    expect(paperTest).toBeInTheDocument();
+
+    ///find remove button
+    const findRemove = screen.getByText('Remove');
+    expect(findRemove).toBeInTheDocument();
+    ///
+
+    ///click remove and use screen.debug to confirm ToiletPaper has been removed
+    userEvent.click(findRemove);
+    ///
 
     ///find the input and type in test
     const findInput1 = screen.getByPlaceholderText('Enter Item Here.');
@@ -41,6 +52,16 @@ describe('behaviour test 1', () => {
     const checkTest = await screen.findByText('test');
     expect(checkTest).toBeInTheDocument();
     ///
+  });
+});
+
+describe('behaviour test 2', () => {
+  it('testing edit functionality', async () => {
+    render(
+      <ContextProvider>
+        <App />
+      </ContextProvider>
+    );
 
     screen.debug();
   });
