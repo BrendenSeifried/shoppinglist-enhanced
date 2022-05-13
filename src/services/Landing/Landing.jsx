@@ -9,16 +9,6 @@ export default function Landing() {
     useItemContext();
 
   // const [item, setItem] = useState('');
-  const [load, setLoad] = useState(true);
-
-  useEffect(() => {
-    const placeItems = async () => {
-      setLoad(false);
-    };
-    placeItems();
-  }, []);
-
-  if (load) return <h1>Loading</h1>;
 
   return (
     <>
@@ -27,6 +17,7 @@ export default function Landing() {
         <label>
           Enter a grocery item:
           <input
+            placeholder="Enter Item Here."
             type="text"
             value={grocery}
             onChange={(e) => setGrocery(e.target.value)}
@@ -37,10 +28,6 @@ export default function Landing() {
       </div>
       {allItems.map((items) => (
         <div key={items.id}>
-          {/* <button>EDIT</button>
-          <p>{items.item}</p>
-
-          <button onClick={() => removeGrocery(items.id)}>Remove</button> */}
           <DOMcomponent items={items} />
         </div>
       ))}
