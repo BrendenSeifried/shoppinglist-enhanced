@@ -91,6 +91,31 @@ describe('behaviour test 2', () => {
     const testing2 = screen.getByText('test2');
     expect(testing2).toBeInTheDocument();
     ///
-    screen.debug();
+  });
+});
+
+describe('test for clear all functionality', () => {
+  it('test for clear all', () => {
+    render(
+      <ContextProvider>
+        <App />
+      </ContextProvider>
+    );
+    const findTextField = screen.getByPlaceholderText('Enter Item Here.');
+    expect(findTextField).toBeInTheDocument();
+
+    userEvent.type(findTextField, 'first');
+
+    const addFirst = screen.getByText('Add');
+    userEvent.click(addFirst);
+
+    userEvent.type(findTextField, 'second');
+    userEvent.click(addFirst);
+
+    const firstTest = screen.getByText('first');
+    expect(firstTest).toBeInTheDocument();
+
+    const secondTest = screen.getByText('second');
+    expect(secondTest).toBeInTheDocument();
   });
 });
