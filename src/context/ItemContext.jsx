@@ -24,28 +24,34 @@ const reducer = (state, action) => {
   }
 };
 
+let counter = 0;
 const ItemContext = createContext();
 const ContextProvider = ({ children }) => {
   const [grocery, setGrocery] = useState(''); ////text to enter item
   const [allItems, dispatch] = useReducer(reducer, initItem); ///dispatch and array of items
   const [editItem, setEditItem] = useState('');
 
+  console.log(counter);
+
   /////ADDING NEW GROCERY
   const submitGrocery = () => {
     dispatch({ type: 'NEW', payload: { item: grocery } });
     setGrocery('');
+    counter++;
   };
   ////////////////////////////
 
   /////////DELETE ALL GROCERY
   const clearAll = (id) => {
     dispatch({ type: 'CLEARALL', payload: { id } });
+    counter = 0;
   };
   ///////////////
 
   /////////REMOVE GROCERY
   const removeGrocery = (id) => {
     dispatch({ type: 'REMOVE', payload: { id } });
+    counter--;
   };
   ///////////////
 
@@ -67,6 +73,7 @@ const ContextProvider = ({ children }) => {
         editGrocery,
         editItem,
         setEditItem,
+        counter,
       }}
     >
       {children}

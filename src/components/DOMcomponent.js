@@ -9,6 +9,7 @@ export default function DOMcomponent({ items }) {
   const editBtn = () => {
     setEdit(!edit);
   };
+
   return (
     <div>
       {edit && (
@@ -25,6 +26,7 @@ export default function DOMcomponent({ items }) {
       <p>{items.item}</p>
 
       <button onClick={editBtn}>{edit ? 'CLOSE' : 'EDIT'}</button>
+
       <button onClick={() => removeGrocery(items.id)}>Remove</button>
     </div>
   );
