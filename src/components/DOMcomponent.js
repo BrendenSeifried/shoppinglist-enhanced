@@ -1,21 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useItemContext } from '../context/ItemContext';
 
 export default function DOMcomponent({ items }) {
-  //   const { edit } = useItemContext();
-
-  const {
-    removeGrocery,
-    allItems,
-    submitGrocery,
-    setGrocery,
-    grocery,
-    clearAll,
-    edit,
-    editBtn,
-    text,
-    editGrocery,
-  } = useItemContext();
+  const { removeGrocery, setGrocery, grocery, edit, editGrocery } =
+    useItemContext();
   return (
     <div>
       {edit && (
@@ -27,7 +15,7 @@ export default function DOMcomponent({ items }) {
       )}
       <p>{items.item}</p>
 
-      <button onClick={editGrocery}>{edit ? 'EDIT' : 'SAVE'}</button>
+      <button onClick={editGrocery}>{edit ? 'SAVE' : 'EDIT'}</button>
       <button onClick={() => removeGrocery(items.id)}>Remove</button>
     </div>
   );
