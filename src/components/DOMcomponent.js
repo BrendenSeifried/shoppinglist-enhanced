@@ -14,6 +14,7 @@ export default function DOMcomponent({ items }) {
       {edit && (
         <>
           <input
+            placeholder="Enter Changes Here."
             type="text"
             value={editItem.id}
             onChange={(e) => setEditItem(e.target.value)}

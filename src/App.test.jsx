@@ -63,6 +63,34 @@ describe('behaviour test 2', () => {
       </ContextProvider>
     );
 
+    const paperTest2 = screen.getByText('ToiletPaper');
+    expect(paperTest2).toBeInTheDocument();
+
+    ///find edit button
+    const findEdit = screen.getByText('EDIT');
+    expect(findEdit).toBeInTheDocument();
+
+    userEvent.click(findEdit);
+    ///
+
+    ///find Edit button and click it
+    const findInput2 = screen.getByPlaceholderText('Enter Changes Here.');
+    expect(findInput2).toBeInTheDocument();
+
+    userEvent.type(findInput2, 'test2');
+    ///
+
+    ///find and click Save
+    const findSave = screen.getByText('SAVE');
+    expect(findSave).toBeInTheDocument();
+
+    userEvent.click(findSave);
+    ///
+
+    ///testing if the item 'test2' is now rendered to the screen.
+    const testing2 = screen.getByText('test2');
+    expect(testing2).toBeInTheDocument();
+    ///
     screen.debug();
   });
 });
